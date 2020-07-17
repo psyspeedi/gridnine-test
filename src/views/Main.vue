@@ -11,7 +11,7 @@
 <script>
   import FlightCard from '../components/FlightCard'
   import FilterSide from '../components/FilterSide'
-  import {mapGetters, mapState} from 'vuex'
+  import {mapGetters, mapState, mapMutations, mapActions } from 'vuex'
   export default {
     name: 'Home',
     components: {FilterSide, FlightCard},
@@ -26,14 +26,16 @@
       }
     },
     methods: {
+      ...mapMutations(['setFlightsPerPage', 'setAirlines', 'setPriceMax']),
+      ...mapActions(['fetchFlights']),
       showMoreHandler() {
-        this.$store.commit('setFlightsPerPage')
+        this.setFlightsPerPage()
       }
     },
     created() {
-      this.$store.dispatch('fetchFlights')
-      this.$store.commit('setAirlines')
-      this.$store.commit('setPriceMax')
+      this.fetchFlights()
+      this.setAirlines()
+      this.setPriceMax()
     }
   }
 </script>
