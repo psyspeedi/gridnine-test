@@ -32,8 +32,8 @@
     },
     created() {
       this.$store.dispatch('fetchFlights')
-      this.$store.dispatch('fetchAirlines')
-      this.$store.dispatch('fetchPriceMax')
+      this.$store.commit('setAirlines')
+      this.$store.commit('setPriceMax')
     }
   }
 </script>

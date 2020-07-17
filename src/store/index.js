@@ -122,7 +122,8 @@ export default new Vuex.Store({
     setFlights(state, flights) {
       state.flights = flights
     },
-    setAirlines(state, airlines) {
+    setAirlines(state) {
+      const airlines = setUniqueAirlines(state.flights)
       state.airlines = airlines
     },
     setSort(state, sort) {
@@ -131,7 +132,8 @@ export default new Vuex.Store({
     setPriceMin(state, price) {
       state.priceMin = price
     },
-    setPriceMax(state, price) {
+    setPriceMax(state) {
+      const price = Math.max.apply(null, state.flights.map(f => (+f.flight.price.total.amount)))
       state.priceMax = price
     },
     setTransfer(state, transfer) {
@@ -148,14 +150,6 @@ export default new Vuex.Store({
     fetchFlights({ commit }) {
       const flights = api.result.flights
       commit('setFlights', flights)
-    },
-    fetchAirlines({commit, state}) {
-      const airlines = setUniqueAirlines(state.flights)
-      commit('setAirlines', airlines)
-    },
-    fetchPriceMax({commit, state}) {
-      const price = Math.max.apply(null, state.flights.map(f => (+f.flight.price.total.amount)))
-      commit('setPriceMax', price)
     }
   }
 })
