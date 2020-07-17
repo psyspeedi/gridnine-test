@@ -1,24 +1,21 @@
 # gridnine-test
 
-## Project setup
+
+### 1. Скачать репозиторий и в корневой директории выполнить
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### 2. После установки зависимостей выполнить команду
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
+### 3. Перейти по адресу
 ```
-npm run build
+http://localhost:8080/ 
 ```
-
-### Lints and fixes files
+### 4. Так же доступно по адресу
 ```
-npm run lint
+https://gridnine-test.web.app/
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
